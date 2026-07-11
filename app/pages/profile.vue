@@ -1,12 +1,23 @@
 <script setup lang="ts">
+import { useDecks } from '~/composables/useDecks'
+
 definePageMeta({
   middleware: ['auth'],
 })
 
 const supabase = useSupabaseClient()
+const { decks, loadDecks } = useDecks()
 
 const playerName = ref('')
 const displayName = ref('')
+const defaultDeckId = ref('')
+const getValidDefaultDeckId = () => {
+  if (!defaultDeckId.value || defaultDeckId.value === 'undefined') {
+    return null
+  }
+
+  return defaultDeckId.value
+}
 const isLoading = ref(true)
 const isSaving = ref(false)
 const errorMessage = ref('')
@@ -36,7 +47,7 @@ const loadProfile = async () => {
 
   const { data, error } = await supabase
     .from('profiles')
-    .select('player_name, display_name')
+    .select('player_name, display_name, default_deck_id')
     .eq('user_id', userId)
     .maybeSingle()
 
@@ -49,6 +60,9 @@ const loadProfile = async () => {
   if (data) {
     playerName.value = data.player_name ?? ''
     displayName.value = data.display_name ?? ''
+    defaultDeckId.value = data.default_deck_id && data.default_deck_id !== 'undefined'
+      ? data.default_deck_id
+      : ''
   }
 
   isLoading.value = false
@@ -59,7 +73,7 @@ const saveProfile = async () => {
   successMessage.value = ''
 
   if (!playerName.value.trim()) {
-    errorMessage.value = 'Bitte gib deinen PTCG Live Spielernamen ein.'
+    errorMessage.value = 'Bitte gib deinen Pokémon TCG Live Spielernamen ein.'
     return
   }
 
@@ -79,6 +93,7 @@ const saveProfile = async () => {
       user_id: userId,
       player_name: playerName.value.trim(),
       display_name: displayName.value.trim() || null,
+      default_deck_id: getValidDefaultDeckId(),
       updated_at: new Date().toISOString(),
     }, {
       onConflict: 'user_id',
@@ -96,30 +111,17 @@ const saveProfile = async () => {
 
 onMounted(() => {
   loadProfile()
+  loadDecks()
 })
 </script>
 
 <template>
-  <main class="min-h-screen bg-slate-50 px-6 py-10 text-slate-950">
-    <section class="mx-auto max-w-3xl">
-      <div class="mb-8 flex items-center justify-between">
-        <div>
-          <p class="text-sm font-bold uppercase tracking-wide text-slate-500">
-            MatchVault
-          </p>
-
-          <h1 class="mt-2 text-4xl font-black">
-            Profil
-          </h1>
-        </div>
-
-        <NuxtLink
-          to="/dashboard"
-          class="rounded-xl border border-slate-300 bg-white px-5 py-3 font-bold text-slate-950 transition hover:bg-slate-100"
-        >
-          Dashboard
-        </NuxtLink>
-      </div>
+  <PageShell>
+    <PageHeader
+        title="Profil"
+        description="Mache Angaben zu deinem Profil."
+    >
+    </PageHeader>
 
       <form
         class="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm"
@@ -132,7 +134,7 @@ onMounted(() => {
         <div v-else class="space-y-6">
           <div>
             <label for="player-name" class="block text-sm font-bold text-slate-700">
-              PTCG Live Spielername
+              Pokémon TCG Live Spielername
             </label>
 
             <input
@@ -144,7 +146,7 @@ onMounted(() => {
             >
 
             <p class="mt-2 text-sm text-slate-500">
-              Dieser Name muss exakt so geschrieben sein wie in deinen Battle Logs.
+              Dieser Name muss exakt so geschrieben sein wie in deinen Kampflogs bzw. wie dein Name in deinen Pokémon TCG Live Profil.
             </p>
           </div>
 
@@ -160,6 +162,30 @@ onMounted(() => {
               class="mt-2 w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:border-slate-950"
               placeholder="z. B. Tanja"
             >
+          </div>
+
+          <div>
+            <label for="default-deck" class="block text-sm font-bold text-slate-700">
+              Standard-Deck
+            </label>
+
+            <select
+              id="default-deck"
+              v-model="defaultDeckId"
+              class="mt-2 w-full rounded-xl border border-slate-300 bg-white px-4 py-3 outline-none focus:border-slate-950"
+            >
+              <option value="">Kein Standard-Deck</option>
+              <option
+                v-for="deck in decks"
+                :key="deck.id"
+                :value="deck.id"
+              >
+                {{ deck.name }}
+              </option>
+            </select>
+            <p class="mt-2 text-sm text-slate-500">
+              Dieses Deck wird automatisch vorausgewählt, wenn du einen neuen Kampflog anlegst.
+            </p>
           </div>
 
           <p v-if="errorMessage" class="rounded-xl bg-red-50 p-4 text-sm font-semibold text-red-700">
@@ -179,6 +205,5 @@ onMounted(() => {
           </button>
         </div>
       </form>
-    </section>
-  </main>
+  </PageShell>
 </template>

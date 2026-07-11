@@ -32,11 +32,11 @@ withDefaults(defineProps<{
     </div>
 
     <div
-      v-if="pokemon2SpriteUrl"
       class="flex items-center justify-center"
       :class="size === 'sm' ? 'h-8 w-8' : 'h-16 w-16'"
     >
       <img
+        v-if="pokemon2SpriteUrl"
         :src="pokemon2SpriteUrl"
         :alt="pokemon2Name || fallbackAlt"
         class="object-contain"

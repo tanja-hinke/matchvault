@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useBattleLogs } from "~/composables/useBattleLogs";
+import Navigation from "~/components/Navigation.vue";
 
 definePageMeta({
   middleware: ['auth'],
@@ -18,6 +19,23 @@ const playerName = ref('')
 const displayName = ref('')
 const isLoadingProfile = ref(true)
 const errorMessage = ref('')
+
+const todayLogsCountLabel = computed(() => {
+  return todayLogs.value.length === 1
+      ? 'Kampflog heute'
+      : 'Kampflogs heute'
+})
+
+const handleLogout = async () => {
+  const { error } = await supabase.auth.signOut()
+
+  if (error) {
+    errorMessage.value = error.message
+    return
+  }
+
+  await navigateTo('/login')
+}
 
 const getCurrentUserId = async () => {
   const { data, error } = await supabase.auth.getUser()
@@ -76,47 +94,17 @@ onMounted(async () => {
 </script>
 
 <template>
-  <PageShell max-width="6xl">
+  <PageShell>
     <PageHeader
       title="Dashboard"
       description="Du bist erfolgreich eingeloggt."
     >
-      <template #actions>
-          <NuxtLink
-            to="/logs"
-            class="rounded-xl border border-slate-300 bg-white px-5 py-3 font-bold text-slate-950 transition hover:bg-slate-100"
-          >
-            Logs
-          </NuxtLink>
-
-          <NuxtLink
-            to="/matchups"
-            class="rounded-xl border border-slate-300 bg-white px-5 py-3 font-bold text-slate-950 transition hover:bg-slate-100"
-          >
-            Matchups
-          </NuxtLink>
-
-          <NuxtLink
-            to="/profile"
-            class="rounded-xl border border-slate-300 bg-white px-5 py-3 font-bold text-slate-950 transition hover:bg-slate-100"
-          >
-            Profil
-          </NuxtLink>
-
-          <button
-            type="button"
-            class="rounded-xl bg-slate-950 px-5 py-3 font-bold text-white transition hover:bg-slate-800"
-            @click="handleLogout"
-          >
-            Ausloggen
-          </button>
-      </template>
     </PageHeader>
 
       <div class="mt-8 grid gap-6 md:grid-cols-2">
         <div class="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
           <h2 class="text-2xl font-black">
-            Dein PTCG Profil
+            Dein Pokémon TCG Profil
           </h2>
 
           <div v-if="isLoadingProfile" class="mt-4 text-slate-600">
@@ -143,7 +131,7 @@ onMounted(async () => {
 
           <div v-else class="mt-4 rounded-xl bg-amber-50 p-4 text-amber-800">
             <p class="font-bold">
-              Du hast noch keinen PTCG Live Spielernamen hinterlegt.
+              Du hast noch keinen Pokémon TCG Live Spielernamen hinterlegt.
             </p>
 
             <NuxtLink
@@ -177,7 +165,7 @@ onMounted(async () => {
             </h2>
 
             <p class="mt-1 text-sm font-semibold text-slate-500">
-              {{ todayLogs.length }} Kampflogs heute
+              {{ todayLogs.length }} {{ todayLogsCountLabel }}
             </p>
           </div>
 

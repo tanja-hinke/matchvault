@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { BattleLog } from '~/types/battle-log'
 import { createDeckRows } from '~/utils/matchup-rows'
 import MatchupStatsCards from '~/components/MatchupStatsCards.vue'
 import MatchupAccordionTable from "~/components/MatchupAccordionTable.vue";
@@ -94,26 +93,11 @@ onMounted(() => {
 </script>
 
 <template>
-  <PageShell max-width="6xl">
+  <PageShell>
     <PageHeader
       title="Matchups"
       description="Analysiere deine Matchups basierend auf gespeicherten Kampflogs."
     >
-      <template #actions>
-        <NuxtLink
-          to="/logs"
-          class="rounded-xl border border-slate-300 bg-white px-5 py-3 text-center font-bold text-slate-950 transition hover:bg-slate-100"
-        >
-          Logs
-        </NuxtLink>
-
-        <NuxtLink
-          to="/dashboard"
-          class="rounded-xl border border-slate-300 bg-white px-5 py-3 text-center font-bold text-slate-950 transition hover:bg-slate-100"
-        >
-          Dashboard
-        </NuxtLink>
-      </template>
     </PageHeader>
 
       <MatchupFilterPanel

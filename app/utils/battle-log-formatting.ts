@@ -1,8 +1,8 @@
 import type { BattleLogResult } from '~/types/battle-log'
 
 export const formatBattleLogDate = (dateValue: string) => {
-  return new Intl.DateTimeFormat('en-US', {
-    month: 'short',
+  return new Intl.DateTimeFormat('de-DE', {
+    month: 'long',
     day: 'numeric',
     year: 'numeric',
   }).format(new Date(dateValue))

@@ -16,7 +16,7 @@ defineProps<{
   <div class="grid gap-4 md:grid-cols-4">
     <article class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
       <p class="text-sm font-bold uppercase tracking-wide text-slate-500">
-        Record
+        Kampfbilanz
       </p>
 
       <p class="mt-2 text-3xl font-black">
@@ -30,7 +30,7 @@ defineProps<{
 
     <article class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
       <p class="text-sm font-bold uppercase tracking-wide text-slate-500">
-        Win rate
+        Siegesquote
       </p>
 
       <p class="mt-2 text-3xl font-black">
@@ -40,7 +40,7 @@ defineProps<{
 
     <article class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
       <p class="text-sm font-bold uppercase tracking-wide text-slate-500">
-        Games
+        Spiele
       </p>
 
       <p class="mt-2 text-3xl font-black">

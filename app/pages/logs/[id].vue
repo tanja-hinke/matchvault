@@ -1,5 +1,47 @@
 <script setup lang="ts">
+import type { SelectedPokemon } from '~/components/PokemonSelect.vue'
 
+definePageMeta({
+  middleware: ['auth'],
+})
+
+type BattleLog = {
+  id: string
+  player_name: string
+  opponent_name: string | null
+  result: 'win' | 'loss' | 'draw' | 'unknown'
+  went_first: boolean | null
+  format: string | null
+
+  own_deck_name: string | null
+  own_pokemon_1_name: string | null
+  own_pokemon_1_sprite_url: string | null
+  own_pokemon_2_name: string | null
+  own_pokemon_2_sprite_url: string | null
+
+  opponent_deck_name: string | null
+  opponent_pokemon_1_name: string | null
+  opponent_pokemon_1_sprite_url: string | null
+  opponent_pokemon_2_name: string | null
+  opponent_pokemon_2_sprite_url: string | null
+
+  raw_log: string
+  notes: string | null
+  played_at: string
+  created_at: string
+}
+
+const route = useRoute()
+const supabase = useSupabaseClient()
+
+const log = ref<BattleLog | null>(null)
+const notes = ref('')
+const isLoading = ref(true)
+const isSavingNotes = ref(false)
+const errorMessage = ref('')
+const successMessage = ref('')
+
+const logId = computed(() => String(route.params.id))
 const isEditing = ref(false)
 const isSavingDetails = ref(false)
 const isDeleting = ref(false)
@@ -148,50 +190,6 @@ const cancelEditing = () => {
   successMessage.value = ''
   errorMessage.value = ''
 }
-
-import type { SelectedPokemon } from '~/components/PokemonSelect.vue'
-
-definePageMeta({
-  middleware: ['auth'],
-})
-
-type BattleLog = {
-  id: string
-  player_name: string
-  opponent_name: string | null
-  result: 'win' | 'loss' | 'draw' | 'unknown'
-  went_first: boolean | null
-  format: string | null
-
-  own_deck_name: string | null
-  own_pokemon_1_name: string | null
-  own_pokemon_1_sprite_url: string | null
-  own_pokemon_2_name: string | null
-  own_pokemon_2_sprite_url: string | null
-
-  opponent_deck_name: string | null
-  opponent_pokemon_1_name: string | null
-  opponent_pokemon_1_sprite_url: string | null
-  opponent_pokemon_2_name: string | null
-  opponent_pokemon_2_sprite_url: string | null
-
-  raw_log: string
-  notes: string | null
-  played_at: string
-  created_at: string
-}
-
-const route = useRoute()
-const supabase = useSupabaseClient()
-
-const log = ref<BattleLog | null>(null)
-const notes = ref('')
-const isLoading = ref(true)
-const isSavingNotes = ref(false)
-const errorMessage = ref('')
-const successMessage = ref('')
-
-const logId = computed(() => String(route.params.id))
 
 const formatDate = (dateValue: string) => {
   return new Intl.DateTimeFormat('de-DE', {
@@ -618,33 +616,12 @@ onMounted(() => {
 </script>
 
 <template>
-  <main class="min-h-screen bg-slate-50 px-6 py-10 text-slate-950">
-    <section class="mx-auto max-w-5xl">
-      <div class="mb-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-        <div>
-          <p class="text-sm font-bold uppercase tracking-wide text-slate-500">
-            MatchVault
-          </p>
-
-          <h1 class="mt-2 text-4xl font-black">
-            Kampflog
-          </h1>
-        </div>
-        <div class="flex flex-wrap gap-3">
-          <NuxtLink
-            to="/matchups"
-            class="rounded-xl border border-slate-300 bg-white px-5 py-3 text-center font-bold text-slate-950 transition hover:bg-slate-100"
-          >
-            Matchups
-          </NuxtLink>
-
-          <NuxtLink
-            to="/dashboard"
-            class="rounded-xl border border-slate-300 bg-white px-5 py-3 text-center font-bold text-slate-950 transition hover:bg-slate-100"
-          >
-            Dashboard
-          </NuxtLink>
-
+  <PageShell>
+    <PageHeader
+        title="Kampflog"
+        description="Füge deine Pokémon TCG Live Battle Logs ein und speichere sie in MatchVault."
+    >
+      <template #actions>
           <button
             v-if="log && !isEditing"
             type="button"
@@ -670,8 +647,8 @@ onMounted(() => {
           >
             Zurück zu Logs
           </NuxtLink>
-        </div>
-      </div>
+        </template>
+      </PageHeader>
 
       <section
         v-if="isEditing"
@@ -717,9 +694,6 @@ onMounted(() => {
               <option value="draw">
                 Draw
               </option>
-              <option value="unknown">
-                Unknown
-              </option>
             </select>
           </div>
 
@@ -739,24 +713,16 @@ onMounted(() => {
               <option value="second">
                 2nd
               </option>
-              <option value="unknown">
-                Unbekannt
-              </option>
             </select>
           </div>
 
           <div class="md:col-span-2">
-            <label for="edit-format" class="block text-sm font-bold text-slate-700">
-              Format
-            </label>
-
-            <input
-              id="edit-format"
-              v-model="editFormat"
-              type="text"
-              class="mt-2 w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:border-slate-950"
-              placeholder="z. B. TEF-POR"
-            >
+            <FormatSelect
+                id="edit-format"
+                v-model="editFormat"
+                label="Format"
+                include-empty-option
+            />
           </div>
         </div>
 
@@ -792,7 +758,7 @@ onMounted(() => {
 
               <div>
                 <label class="block text-sm font-bold text-slate-700">
-                  Pokémon 2 optional
+                  Pokémon 2 (optional)
                 </label>
 
                 <div class="mt-2">
@@ -833,7 +799,7 @@ onMounted(() => {
 
               <div>
                 <label class="block text-sm font-bold text-slate-700">
-                  Pokémon 2 optional
+                  Pokémon 2 (optional)
                 </label>
 
                 <div class="mt-2">
@@ -972,7 +938,7 @@ onMounted(() => {
         <section class="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
           <div class="flex items-center justify-between gap-4">
             <h2 class="text-2xl font-black">
-              Notes
+              Notizen
             </h2>
 
             <button
@@ -1059,6 +1025,5 @@ onMounted(() => {
           </article>
         </section>
       </div>
-    </section>
-  </main>
+  </PageShell>
 </template>

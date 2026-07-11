@@ -35,7 +35,7 @@
     "apiName": "absol-mega-z",
     "germanName": "Absol",
     "displayName": "Absol",
-    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10307.png",
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10307.png",
     "speciesName": "absol",
     "speciesUrl": "https://pokeapi.co/api/v2/pokemon-species/359/"
   },
@@ -195,7 +195,7 @@
     "apiName": "salazzle-totem",
     "germanName": "Amfira",
     "displayName": "Amfira",
-    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10129.png",
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10129.png",
     "speciesName": "salazzle",
     "speciesUrl": "https://pokeapi.co/api/v2/pokemon-species/758/"
   },
@@ -291,7 +291,7 @@
     "apiName": "araquanid-totem",
     "germanName": "Aranestro",
     "displayName": "Aranestro",
-    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10153.png",
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10153.png",
     "speciesName": "araquanid",
     "speciesUrl": "https://pokeapi.co/api/v2/pokemon-species/752/"
   },
@@ -827,7 +827,7 @@
     "apiName": "chesnaught-mega",
     "germanName": "Brigaron",
     "displayName": "Brigaron",
-    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10292.png",
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10292.png",
     "speciesName": "chesnaught",
     "speciesUrl": "https://pokeapi.co/api/v2/pokemon-species/652/"
   },
@@ -971,7 +971,7 @@
     "apiName": "malamar-mega",
     "germanName": "Calamanero",
     "displayName": "Calamanero",
-    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10297.png",
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10297.png",
     "speciesName": "malamar",
     "speciesUrl": "https://pokeapi.co/api/v2/pokemon-species/687/"
   },
@@ -1035,7 +1035,7 @@
     "apiName": "scolipede-mega",
     "germanName": "Cerapendra",
     "displayName": "Cerapendra",
-    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10288.png",
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10288.png",
     "speciesName": "scolipede",
     "speciesUrl": "https://pokeapi.co/api/v2/pokemon-species/545/"
   },
@@ -1339,7 +1339,7 @@
     "apiName": "darkrai-mega",
     "germanName": "Darkrai",
     "displayName": "Darkrai",
-    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10312.png",
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10312.png",
     "speciesName": "darkrai",
     "speciesUrl": "https://pokeapi.co/api/v2/pokemon-species/491/"
   },
@@ -2019,7 +2019,7 @@
     "apiName": "baxcalibur-mega",
     "germanName": "Espinodon",
     "displayName": "Espinodon",
-    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10325.png",
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10325.png",
     "speciesName": "baxcalibur",
     "speciesUrl": "https://pokeapi.co/api/v2/pokemon-species/998/"
   },
@@ -2163,7 +2163,7 @@
     "apiName": "delphox-mega",
     "germanName": "Fennexis",
     "displayName": "Fennexis",
-    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10293.png",
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10293.png",
     "speciesName": "delphox",
     "speciesUrl": "https://pokeapi.co/api/v2/pokemon-species/655/"
   },
@@ -2267,7 +2267,7 @@
     "apiName": "emboar-mega",
     "germanName": "Flambirex",
     "displayName": "Flambirex",
-    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10286.png",
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10286.png",
     "speciesName": "emboar",
     "speciesUrl": "https://pokeapi.co/api/v2/pokemon-species/500/"
   },
@@ -2435,7 +2435,7 @@
     "apiName": "floette-mega",
     "germanName": "Floette",
     "displayName": "Floette",
-    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10296.png",
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10296.png",
     "speciesName": "floette",
     "speciesUrl": "https://pokeapi.co/api/v2/pokemon-species/670/"
   },
@@ -2619,7 +2619,7 @@
     "apiName": "froslass-mega",
     "germanName": "Frosdedje",
     "displayName": "Frosdedje",
-    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10285.png",
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10285.png",
     "speciesName": "froslass",
     "speciesUrl": "https://pokeapi.co/api/v2/pokemon-species/478/"
   },
@@ -3123,7 +3123,7 @@
     "apiName": "golurk-mega",
     "germanName": "Golgantes",
     "displayName": "Golgantes",
-    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10313.png",
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10313.png",
     "speciesName": "golurk",
     "speciesUrl": "https://pokeapi.co/api/v2/pokemon-species/623/"
   },
@@ -3323,7 +3323,7 @@
     "apiName": "scovillain-mega",
     "germanName": "Halupenjo",
     "displayName": "Halupenjo",
-    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10320.png",
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10320.png",
     "speciesName": "scovillain",
     "speciesUrl": "https://pokeapi.co/api/v2/pokemon-species/952/"
   },
@@ -3355,7 +3355,7 @@
     "apiName": "heatran-mega",
     "germanName": "Heatran",
     "displayName": "Heatran",
-    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10311.png",
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10311.png",
     "speciesName": "heatran",
     "speciesUrl": "https://pokeapi.co/api/v2/pokemon-species/485/"
   },
@@ -3651,7 +3651,7 @@
     "apiName": "feraligatr-mega",
     "germanName": "Impergator",
     "displayName": "Impergator",
-    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10283.png",
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10283.png",
     "speciesName": "feraligatr",
     "speciesUrl": "https://pokeapi.co/api/v2/pokemon-species/160/"
   },
@@ -3715,7 +3715,7 @@
     "apiName": "scrafty-mega",
     "germanName": "Irokex",
     "displayName": "Irokex",
-    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10289.png",
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10289.png",
     "speciesName": "scrafty",
     "speciesUrl": "https://pokeapi.co/api/v2/pokemon-species/560/"
   },
@@ -4259,7 +4259,7 @@
     "apiName": "garchomp-mega-z",
     "germanName": "Knakrack",
     "displayName": "Knakrack",
-    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10309.png",
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10309.png",
     "speciesName": "garchomp",
     "speciesUrl": "https://pokeapi.co/api/v2/pokemon-species/445/"
   },
@@ -4595,7 +4595,7 @@
     "apiName": "crabominable-mega",
     "germanName": "Krawell",
     "displayName": "Krawell",
-    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10315.png",
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10315.png",
     "speciesName": "crabominable",
     "speciesUrl": "https://pokeapi.co/api/v2/pokemon-species/740/"
   },
@@ -4947,7 +4947,7 @@
     "apiName": "falinks-mega",
     "germanName": "Legios",
     "displayName": "Legios",
-    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10303.png",
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10303.png",
     "speciesName": "falinks",
     "speciesUrl": "https://pokeapi.co/api/v2/pokemon-species/870/"
   },
@@ -5139,7 +5139,7 @@
     "apiName": "lucario-mega-z",
     "germanName": "Lucario",
     "displayName": "Lucario",
-    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10310.png",
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10310.png",
     "speciesName": "lucario",
     "speciesUrl": "https://pokeapi.co/api/v2/pokemon-species/448/"
   },
@@ -5163,7 +5163,7 @@
     "apiName": "glimmora-mega",
     "germanName": "Lumiflora",
     "displayName": "Lumiflora",
-    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10321.png",
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10321.png",
     "speciesName": "glimmora",
     "speciesUrl": "https://pokeapi.co/api/v2/pokemon-species/970/"
   },
@@ -5307,7 +5307,7 @@
     "apiName": "magearna-mega",
     "germanName": "Magearna",
     "displayName": "Magearna",
-    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10317.png",
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10317.png",
     "speciesName": "magearna",
     "speciesUrl": "https://pokeapi.co/api/v2/pokemon-species/801/"
   },
@@ -5315,7 +5315,7 @@
     "apiName": "magearna-original-mega",
     "germanName": "Magearna",
     "displayName": "Magearna",
-    "spriteUrl": null,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10318.png",
     "speciesName": "magearna",
     "speciesUrl": "https://pokeapi.co/api/v2/pokemon-species/801/"
   },
@@ -5467,7 +5467,7 @@
     "apiName": "lurantis-totem",
     "germanName": "Mantidea",
     "displayName": "Mantidea",
-    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10128.png",
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10128.png",
     "speciesName": "lurantis",
     "speciesUrl": "https://pokeapi.co/api/v2/pokemon-species/754/"
   },
@@ -5683,7 +5683,7 @@
     "apiName": "meganium-mega",
     "germanName": "Meganie",
     "displayName": "Meganie",
-    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10282.png",
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10282.png",
     "speciesName": "meganium",
     "speciesUrl": "https://pokeapi.co/api/v2/pokemon-species/154/"
   },
@@ -6427,7 +6427,7 @@
     "apiName": "tatsugiri-curly-mega",
     "germanName": "Nigiragi",
     "displayName": "Nigiragi",
-    "spriteUrl": null,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10322.png",
     "speciesName": "tatsugiri",
     "speciesUrl": "https://pokeapi.co/api/v2/pokemon-species/978/"
   },
@@ -6435,7 +6435,7 @@
     "apiName": "tatsugiri-droopy-mega",
     "germanName": "Nigiragi",
     "displayName": "Nigiragi",
-    "spriteUrl": null,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10323.png",
     "speciesName": "tatsugiri",
     "speciesUrl": "https://pokeapi.co/api/v2/pokemon-species/978/"
   },
@@ -6443,7 +6443,7 @@
     "apiName": "tatsugiri-stretchy-mega",
     "germanName": "Nigiragi",
     "displayName": "Nigiragi",
-    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10324.png",
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10324.png",
     "speciesName": "tatsugiri",
     "speciesUrl": "https://pokeapi.co/api/v2/pokemon-species/978/"
   },
@@ -6659,7 +6659,7 @@
     "apiName": "chimecho-mega",
     "germanName": "Palimpalim",
     "displayName": "Palimpalim",
-    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10306.png",
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10306.png",
     "speciesName": "chimecho",
     "speciesUrl": "https://pokeapi.co/api/v2/pokemon-species/358/"
   },
@@ -6819,7 +6819,7 @@
     "apiName": "skarmory-mega",
     "germanName": "Panzaeron",
     "displayName": "Panzaeron",
-    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10284.png",
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10284.png",
     "speciesName": "skarmory",
     "speciesUrl": "https://pokeapi.co/api/v2/pokemon-species/227/"
   },
@@ -7219,7 +7219,7 @@
     "apiName": "clefable-mega",
     "germanName": "Pixi",
     "displayName": "Pixi",
-    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10278.png",
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10278.png",
     "speciesName": "clefable",
     "speciesUrl": "https://pokeapi.co/api/v2/pokemon-species/36/"
   },
@@ -7392,10 +7392,18 @@
     "speciesUrl": "https://pokeapi.co/api/v2/pokemon-species/678/"
   },
   {
-    "apiName": "meowstic-mega",
+    "apiName": "meowstic-male-mega",
     "germanName": "Psiaugon",
     "displayName": "Psiaugon",
-    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10314.png",
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10314.png",
+    "speciesName": "meowstic",
+    "speciesUrl": "https://pokeapi.co/api/v2/pokemon-species/678/"
+  },
+  {
+    "apiName": "meowstic-female-mega",
+    "germanName": "Psiaugon",
+    "displayName": "Psiaugon",
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10326.png",
     "speciesName": "meowstic",
     "speciesUrl": "https://pokeapi.co/api/v2/pokemon-species/678/"
   },
@@ -7507,7 +7515,7 @@
     "apiName": "pyroar-mega",
     "germanName": "Pyroleo",
     "displayName": "Pyroleo",
-    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10295.png",
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10295.png",
     "speciesName": "pyroar",
     "speciesUrl": "https://pokeapi.co/api/v2/pokemon-species/668/"
   },
@@ -7547,7 +7555,7 @@
     "apiName": "greninja-mega",
     "germanName": "Quajutsu",
     "displayName": "Quajutsu",
-    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10294.png",
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10294.png",
     "speciesName": "greninja",
     "speciesUrl": "https://pokeapi.co/api/v2/pokemon-species/658/"
   },
@@ -7651,7 +7659,7 @@
     "apiName": "raichu-mega-x",
     "germanName": "Raichu",
     "displayName": "Raichu",
-    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10304.png",
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10304.png",
     "speciesName": "raichu",
     "speciesUrl": "https://pokeapi.co/api/v2/pokemon-species/26/"
   },
@@ -7659,7 +7667,7 @@
     "apiName": "raichu-mega-y",
     "germanName": "Raichu",
     "displayName": "Raichu",
-    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10305.png",
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10305.png",
     "speciesName": "raichu",
     "speciesUrl": "https://pokeapi.co/api/v2/pokemon-species/26/"
   },
@@ -7883,7 +7891,7 @@
     "apiName": "hawlucha-mega",
     "germanName": "Resladero",
     "displayName": "Resladero",
-    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10300.png",
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10300.png",
     "speciesName": "hawlucha",
     "speciesUrl": "https://pokeapi.co/api/v2/pokemon-species/701/"
   },
@@ -8563,7 +8571,7 @@
     "apiName": "drampa-mega",
     "germanName": "Sen-Long",
     "displayName": "Sen-Long",
-    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10302.png",
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10302.png",
     "speciesName": "drampa",
     "speciesUrl": "https://pokeapi.co/api/v2/pokemon-species/780/"
   },
@@ -8803,7 +8811,7 @@
     "apiName": "chandelure-mega",
     "germanName": "Skelabra",
     "displayName": "Skelabra",
-    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10291.png",
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10291.png",
     "speciesName": "chandelure",
     "speciesUrl": "https://pokeapi.co/api/v2/pokemon-species/609/"
   },
@@ -9099,7 +9107,7 @@
     "apiName": "excadrill-mega",
     "germanName": "Stalobor",
     "displayName": "Stalobor",
-    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10287.png",
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10287.png",
     "speciesName": "excadrill",
     "speciesUrl": "https://pokeapi.co/api/v2/pokemon-species/530/"
   },
@@ -9123,7 +9131,7 @@
     "apiName": "staraptor-mega",
     "germanName": "Staraptor",
     "displayName": "Staraptor",
-    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10308.png",
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10308.png",
     "speciesName": "staraptor",
     "speciesUrl": "https://pokeapi.co/api/v2/pokemon-species/398/"
   },
@@ -9147,7 +9155,7 @@
     "apiName": "starmie-mega",
     "germanName": "Starmie",
     "displayName": "Starmie",
-    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10280.png",
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10280.png",
     "speciesName": "starmie",
     "speciesUrl": "https://pokeapi.co/api/v2/pokemon-species/121/"
   },
@@ -9275,7 +9283,7 @@
     "apiName": "dragalge-mega",
     "germanName": "Tandrak",
     "displayName": "Tandrak",
-    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10299.png",
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10299.png",
     "speciesName": "dragalge",
     "speciesUrl": "https://pokeapi.co/api/v2/pokemon-species/691/"
   },
@@ -9403,7 +9411,7 @@
     "apiName": "golisopod-mega",
     "germanName": "Tectass",
     "displayName": "Tectass",
-    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10316.png",
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10316.png",
     "speciesName": "golisopod",
     "speciesUrl": "https://pokeapi.co/api/v2/pokemon-species/768/"
   },
@@ -9515,7 +9523,7 @@
     "apiName": "barbaracle-mega",
     "germanName": "Thanathora",
     "displayName": "Thanathora",
-    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10298.png",
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10298.png",
     "speciesName": "barbaracle",
     "speciesUrl": "https://pokeapi.co/api/v2/pokemon-species/689/"
   },
@@ -9547,7 +9555,7 @@
     "apiName": "togedemaru-totem",
     "germanName": "Togedemaru",
     "displayName": "Togedemaru",
-    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10154.png",
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10154.png",
     "speciesName": "togedemaru",
     "speciesUrl": "https://pokeapi.co/api/v2/pokemon-species/777/"
   },
@@ -10539,7 +10547,7 @@
     "apiName": "eelektross-mega",
     "germanName": "Zapplarang",
     "displayName": "Zapplarang",
-    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10290.png",
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10290.png",
     "speciesName": "eelektross",
     "speciesUrl": "https://pokeapi.co/api/v2/pokemon-species/604/"
   },
@@ -10595,7 +10603,7 @@
     "apiName": "zeraora-mega",
     "germanName": "Zeraora",
     "displayName": "Zeraora",
-    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10319.png",
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10319.png",
     "speciesName": "zeraora",
     "speciesUrl": "https://pokeapi.co/api/v2/pokemon-species/807/"
   },

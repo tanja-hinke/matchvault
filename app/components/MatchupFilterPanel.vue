@@ -22,7 +22,7 @@ const formatFilter = defineModel<string>('formatFilter', {
 defineProps<{
   visibleLogCount: number
   totalLogCount: number
-  availableFormats: string[]
+  availableFormats?: string[]
   searchPlaceholder?: string
 }>()
 
@@ -113,34 +113,16 @@ const emit = defineEmits<{
           <option value="second">
             2nd
           </option>
-          <option value="unknown">
-            Unbekannt
-          </option>
         </select>
       </div>
 
       <div>
-        <label for="matchup-format-filter" class="block text-sm font-bold text-slate-700">
-          Format
-        </label>
-
-        <select
-          id="matchup-format-filter"
-          v-model="formatFilter"
-          class="mt-2 w-full rounded-xl border border-slate-300 bg-white px-4 py-3 outline-none focus:border-slate-950"
-        >
-          <option value="all">
-            Alle Formate
-          </option>
-
-          <option
-            v-for="format in availableFormats"
-            :key="format"
-            :value="format"
-          >
-            {{ format }}
-          </option>
-        </select>
+        <FormatSelect
+            id="matchup-format-filter"
+            v-model="formatFilter"
+            label="Format"
+            include-all-option
+        />
       </div>
     </div>
   </div>

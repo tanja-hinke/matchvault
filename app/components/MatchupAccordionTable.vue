@@ -58,13 +58,13 @@ const getPokemon2SpriteUrl = (row: MatchupDeckRow | OpponentMatchupRow) => {
           Deck
         </th>
         <th class="py-4 pr-4">
-          Last played
+         Zuletzt gespielt
         </th>
         <th class="py-4 pr-4">
-          Record
+          Kampfbilanz
         </th>
         <th class="py-4 text-right">
-          Win rate
+          Siegesquote
         </th>
       </tr>
       </thead>

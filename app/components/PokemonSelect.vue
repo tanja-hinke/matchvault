@@ -21,8 +21,25 @@ const model = defineModel<SelectedPokemon | null>({
 
 const search = ref('')
 const isOpen = ref(false)
+const containerRef = ref<HTMLElement | null>(null)
 
 const pokemonList = computed(() => pokemonData as PokemonDataItem[])
+
+const closeDropdown = () => {
+  isOpen.value = false
+}
+
+const handleClickOutside = (event: MouseEvent) => {
+  const target = event.target
+
+  if (!(target instanceof Node)) {
+    return
+  }
+
+  if (!containerRef.value?.contains(target)) {
+    closeDropdown()
+  }
+}
 
 const normalizeSearch = (value: string) => {
   return value
@@ -70,9 +87,18 @@ const clearSelection = () => {
   search.value = ''
   isOpen.value = false
 }
+
+onMounted(() => {
+  document.addEventListener('click', handleClickOutside)
+})
+
+onBeforeUnmount(() => {
+  document.removeEventListener('click', handleClickOutside)
+})
 </script>
+
 <template>
-  <div class="relative">
+  <div ref="containerRef" class="relative">
     <div
       v-if="model"
       class="flex items-center justify-between gap-3 rounded-xl border border-slate-300 bg-white px-4 py-3"
@@ -103,9 +129,10 @@ const clearSelection = () => {
       <input
         v-model="search"
         type="text"
-        class="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:border-slate-950"
+        class="w-full h-[58px] rounded-xl border border-slate-300 px-4 py-3 outline-none focus:border-slate-950"
         placeholder="Pokémon suchen..."
         @focus="isOpen = true"
+        @keydown.esc="closeDropdown"
       >
 
       <div

@@ -1,10 +1,8 @@
 <script setup lang="ts">
-import type { BattleLog } from '~/types/battle-log'
 import { createOpponentMatchupRows } from '~/utils/matchup-rows'
 import MatchupAccordionTable from "~/components/MatchupAccordionTable.vue";
-import {useBattleLogFilters} from "~/composables/useBattleLogFilters";
-import {useBattleLogs} from "~/composables/useBattleLogs";
-
+import { useBattleLogFilters } from "~/composables/useBattleLogFilters";
+import { useBattleLogs } from "~/composables/useBattleLogs";
 
 definePageMeta({
   middleware: ['auth'],
@@ -88,8 +86,8 @@ const totalStats = computed(() => {
 })
 
 const formatDate = (dateValue: string) => {
-  return new Intl.DateTimeFormat('en-US', {
-    month: 'short',
+  return new Intl.DateTimeFormat('de-DE', {
+    month: 'long',
     day: 'numeric',
     year: 'numeric',
   }).format(new Date(dateValue))
@@ -103,33 +101,11 @@ onMounted(() => {
 </script>
 
 <template>
-  <PageShell max-width="6xl">
+  <PageShell>
     <PageHeader
       title="Matchups"
       description="Detaillierte Matchup-Statistik für dieses Deck."
     >
-      <template #actions>
-        <NuxtLink
-          to="/logs"
-          class="rounded-xl border border-slate-300 bg-white px-5 py-3 text-center font-bold text-slate-950 transition hover:bg-slate-100"
-        >
-          Logs
-        </NuxtLink>
-
-        <NuxtLink
-          to="/dashboard"
-          class="rounded-xl border border-slate-300 bg-white px-5 py-3 text-center font-bold text-slate-950 transition hover:bg-slate-100"
-        >
-          Dashboard
-        </NuxtLink>
-
-        <NuxtLink
-          to="/matchups"
-          class="rounded-xl border border-slate-300 bg-white px-5 py-3 text-center font-bold text-slate-950 transition hover:bg-slate-100"
-        >
-          Zurück zu deinen Decks
-        </NuxtLink>
-      </template>
     </PageHeader>
 
       <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">

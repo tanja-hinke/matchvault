@@ -1,0 +1,50 @@
+[
+  {
+    "label": "TEF-CRI",
+    "value": "TEF-CRI"
+  },
+  {
+    "label": "TEF-POR",
+    "value": "TEF-POR"
+  },
+  {
+    "label": "SVI-ASC",
+    "value": "SVI-ASC"
+  },
+  {
+    "label": "SVI-PFL",
+    "value": "SVI-PFL"
+  },
+  {
+    "label": "SVI-MEG",
+    "value": "SVI-MEG"
+  },
+  {
+    "label": "SVI-WHT/BLK",
+    "value": "SVI-WHT/BLK"
+  },
+  {
+    "label": "SVI-DRI",
+    "value": "SVI-DRI"
+  },
+  {
+    "label": "SVI-JTG",
+    "value": "SVI-JTG"
+  },
+  {
+    "label": "BRS-PRE",
+    "value": "BRS-PRE"
+  },
+  {
+    "label": "BRS-SSP",
+    "value": "BRS-SSP"
+  },
+  {
+    "label": "BRS-SCR",
+    "value": "BRS-SCR"
+  },
+  {
+    "label": "Expanded",
+    "value": "Expanded"
+  }
+]

@@ -1,7 +1,11 @@
 <script setup lang="ts">
+import { useDecks } from '~/composables/useDecks'
 import { validateBattleLog } from '~/utils/battle-log-validator'
 import { parseBattleLog, type ParsedBattleLog } from '~/utils/battle-log-parser'
 import type { SelectedPokemon } from '~/components/PokemonSelect.vue'
+import type { Deck } from '~/types/deck'
+
+const NEW_DECK_VALUE = '__new_deck__'
 
 const { compact = false } = defineProps<{
   compact?: boolean
@@ -12,17 +16,21 @@ const emit = defineEmits<{
 }>()
 
 const supabase = useSupabaseClient()
+const { decks, loadDecks, createDeck } = useDecks()
+const { defaultFormat } = useFormats()
 
 const rawLog = ref('')
 const parsedBattleLog = ref<ParsedBattleLog | null>(null)
 const profilePlayerName = ref('')
+const defaultDeckId = ref('')
+const selectedDeckId = ref('')
 
 const isReviewModalOpen = ref(false)
 const isSavingLog = ref(false)
 
 const ownDeckName = ref('')
 const opponentDeckName = ref('')
-const selectedFormat = ref('TEF-POR')
+const selectedFormat = ref(defaultFormat.value)
 
 const ownPokemon1 = ref<SelectedPokemon | null>(null)
 const ownPokemon2 = ref<SelectedPokemon | null>(null)
@@ -32,6 +40,14 @@ const opponentPokemon2 = ref<SelectedPokemon | null>(null)
 const errorMessage = ref('')
 const successMessage = ref('')
 const warningMessages = ref<string[]>([])
+
+const normalizeDeckId = (deckId: string | null | undefined) => {
+  if (!deckId || deckId === 'undefined') {
+    return ''
+  }
+
+  return deckId
+}
 
 const getCurrentUserId = async () => {
   const { data, error } = await supabase.auth.getUser()
@@ -52,10 +68,10 @@ const loadProfile = async () => {
   }
 
   const { data, error } = await supabase
-    .from('profiles')
-    .select('player_name')
-    .eq('user_id', userId)
-    .maybeSingle()
+      .from('profiles')
+      .select('player_name, default_deck_id')
+      .eq('user_id', userId)
+      .maybeSingle()
 
   if (error) {
     errorMessage.value = error.message
@@ -63,16 +79,88 @@ const loadProfile = async () => {
   }
 
   profilePlayerName.value = data?.player_name ?? ''
+  defaultDeckId.value = normalizeDeckId(data?.default_deck_id)
+
+  if (defaultDeckId.value) {
+    selectedDeckId.value = defaultDeckId.value
+  }
+}
+
+const clearOwnDeckFields = () => {
+  ownDeckName.value = ''
+  ownPokemon1.value = null
+  ownPokemon2.value = null
 }
 
 const resetReviewForm = () => {
-  ownDeckName.value = ''
+  selectedDeckId.value = normalizeDeckId(defaultDeckId.value)
+  clearOwnDeckFields()
   opponentDeckName.value = ''
-  selectedFormat.value = 'TEF-POR'
-  ownPokemon1.value = null
-  ownPokemon2.value = null
+  selectedFormat.value = defaultFormat.value
   opponentPokemon1.value = null
   opponentPokemon2.value = null
+}
+
+const applyDeck = (deck: Deck) => {
+  ownDeckName.value = deck.name
+
+  ownPokemon1.value = {
+    name: deck.pokemon_1_name,
+    spriteUrl: deck.pokemon_1_sprite_url,
+  }
+
+  ownPokemon2.value = deck.pokemon_2_name
+    ? {
+        name: deck.pokemon_2_name,
+        spriteUrl: deck.pokemon_2_sprite_url,
+      }
+    : null
+}
+
+const applySelectedDeck = () => {
+  if (selectedDeckId.value === NEW_DECK_VALUE) {
+    clearOwnDeckFields()
+    return
+  }
+
+  const normalizedDeckId = normalizeDeckId(selectedDeckId.value)
+
+  if (!normalizedDeckId) {
+    return
+  }
+
+  const deck = decks.value.find((deck) => deck.id === normalizedDeckId)
+
+  if (!deck) {
+    return
+  }
+
+  applyDeck(deck)
+}
+
+const prepareDefaultDeckForReview = async () => {
+  await loadDecks()
+
+  selectedDeckId.value = normalizeDeckId(defaultDeckId.value)
+  applySelectedDeck()
+}
+
+const createSelectedNewDeck = async () => {
+  if (selectedDeckId.value !== NEW_DECK_VALUE) {
+    return
+  }
+
+  if (!ownDeckName.value.trim() || !ownPokemon1.value) {
+    return
+  }
+
+  await createDeck({
+    name: ownDeckName.value.trim(),
+    pokemon_1_name: ownPokemon1.value.name,
+    pokemon_1_sprite_url: ownPokemon1.value.spriteUrl,
+    pokemon_2_name: ownPokemon2.value?.name ?? null,
+    pokemon_2_sprite_url: ownPokemon2.value?.spriteUrl ?? null,
+  })
 }
 
 const pasteClipboardIntoRawLog = async () => {
@@ -95,6 +183,12 @@ const pasteClipboardIntoRawLog = async () => {
   } catch (error) {
     console.error('Zwischenspeicher konnte nicht gelesen werden:', error)
   }
+  parsedBattleLog.value = parseBattleLog(rawLog.value, profilePlayerName.value)
+  warningMessages.value = validation.warnings
+  resetReviewForm()
+  applySelectedDeck()
+
+  isReviewModalOpen.value = true
 }
 
 const handleAddLog = async () => {
@@ -119,6 +213,7 @@ const handleAddLog = async () => {
   parsedBattleLog.value = parseBattleLog(rawLog.value, profilePlayerName.value)
   warningMessages.value = validation.warnings
   resetReviewForm()
+  await prepareDefaultDeckForReview()
 
   isReviewModalOpen.value = true
 }
@@ -194,13 +289,15 @@ const confirmBattleLog = async () => {
       updated_at: new Date().toISOString(),
     })
 
-  isSavingLog.value = false
-
   if (error) {
+    isSavingLog.value = false
     errorMessage.value = error.message
     return
   }
 
+  await createSelectedNewDeck()
+
+  isSavingLog.value = false
   successMessage.value = 'Kampflog wurde gespeichert.'
   rawLog.value = ''
   parsedBattleLog.value = null
@@ -210,8 +307,15 @@ const confirmBattleLog = async () => {
   emit('saved')
 }
 
-onMounted(() => {
-  loadProfile()
+watch(selectedDeckId, () => {
+  applySelectedDeck()
+})
+
+onMounted(async () => {
+  await Promise.all([
+    loadProfile(),
+    loadDecks(),
+  ])
 })
 </script>
 
@@ -223,7 +327,7 @@ onMounted(() => {
         v-model="rawLog"
         :rows="compact ? 4 : 7"
         class="w-full resize-y rounded-xl border border-slate-300 px-4 py-3 pe-[120px] outline-none focus:border-slate-950"
-        placeholder="Paste PTCGL log here"
+        placeholder="Pokémon TCG Live Kampflog hier einfügen"
         @focus="pasteClipboardIntoRawLog"
         @click="pasteClipboardIntoRawLog"
       />
@@ -324,7 +428,7 @@ onMounted(() => {
         <div class="flex items-start justify-between gap-6">
           <div>
             <h2 class="text-3xl font-black">
-              Review Battle Log
+              Kampflog überprüfen
             </h2>
 
             <p class="mt-2 text-slate-600">
@@ -389,6 +493,27 @@ onMounted(() => {
 
             <div class="mt-4 grid gap-4 md:grid-cols-2">
               <div class="md:col-span-2">
+                <label for="select-deck" class="block text-sm font-bold text-slate-700">
+                  Deck auswählen
+                </label>
+                <select
+                  id="select-deck"
+                  v-model="selectedDeckId"
+                  class="h-[58px] mt-2 w-full rounded-xl border border-slate-300 bg-white px-4 py-3 outline-none focus:border-slate-950"
+                >
+                  <option value="">-- Eigenes Deck wählen --</option>
+                  <option :value="NEW_DECK_VALUE">+ Neues Deck</option>
+                  <option
+                    v-for="deck in decks"
+                    :key="deck.id"
+                    :value="deck.id"
+                  >
+                    {{ deck.name }}
+                  </option>
+                </select>
+              </div>
+
+              <div class="md:col-span-2">
                 <label for="own-deck-name" class="block text-sm font-bold text-slate-700">
                   Deckname
                 </label>
@@ -397,8 +522,8 @@ onMounted(() => {
                   id="own-deck-name"
                   v-model="ownDeckName"
                   type="text"
-                  class="mt-2 w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:border-slate-950"
-                  placeholder="z. B. Dragapult / Dummimisel"
+                  class="h-[58px] mt-2 w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:border-slate-950"
+                  placeholder="z. B. Katapuldra / Dummimisel"
                 >
               </div>
 
@@ -414,7 +539,7 @@ onMounted(() => {
 
               <div>
                 <label class="block text-sm font-bold text-slate-700">
-                  Pokémon 2 optional
+                  Pokémon 2 (optional)
                 </label>
 
                 <div class="mt-2">
@@ -439,7 +564,7 @@ onMounted(() => {
                   id="opponent-deck-name"
                   v-model="opponentDeckName"
                   type="text"
-                  class="mt-2 w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:border-slate-950"
+                  class="h-[58px] mt-2 w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:border-slate-950"
                   placeholder="z. B. Lunastein / Sonnfel"
                 >
               </div>
@@ -456,7 +581,7 @@ onMounted(() => {
 
               <div>
                 <label class="block text-sm font-bold text-slate-700">
-                  Pokémon 2 optional
+                  Pokémon 2 (optional)
                 </label>
 
                 <div class="mt-2">
@@ -467,17 +592,12 @@ onMounted(() => {
           </section>
 
           <section>
-            <label for="format" class="block text-sm font-bold text-slate-700">
-              Format
-            </label>
-
-            <input
-              id="format"
-              v-model="selectedFormat"
-              type="text"
-              class="mt-2 w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:border-slate-950"
-              placeholder="z. B. TEF-POR"
-            >
+            <FormatSelect
+                id="battle-log-format"
+                v-model="selectedFormat"
+                label="Format"
+                include-empty-option
+            />
           </section>
         </div>
 
@@ -494,7 +614,7 @@ onMounted(() => {
             class="rounded-xl bg-slate-100 px-5 py-3 font-bold text-slate-950 transition hover:bg-slate-200"
             @click="isReviewModalOpen = false"
           >
-            Close
+            Schließen
           </button>
 
           <button
@@ -503,7 +623,7 @@ onMounted(() => {
             :disabled="isSavingLog"
             @click="confirmBattleLog"
           >
-            {{ isSavingLog ? 'Speichert...' : 'Confirm' }}
+            {{ isSavingLog ? 'Speichert...' : 'Speichern' }}
           </button>
         </div>
       </section>

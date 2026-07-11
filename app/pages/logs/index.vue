@@ -7,7 +7,7 @@ definePageMeta({
   middleware: ['auth'],
 })
 
-//const supabase = useSupabaseClient()
+const supabase = useSupabaseClient()
 
 const {
   logs,
@@ -63,7 +63,7 @@ const formatDate = (dateValue: string) => {
 const getDateGroupKey = (dateValue: string) => {
   const date = new Date(dateValue)
 
-  return new Intl.DateTimeFormat('en-CA', {
+  return new Intl.DateTimeFormat('de-DE', {
     year: 'numeric',
     month: '2-digit',
     day: '2-digit',
@@ -71,8 +71,8 @@ const getDateGroupKey = (dateValue: string) => {
 }
 
 const formatDateGroupTitle = (dateValue: string) => {
-  return new Intl.DateTimeFormat('en-US', {
-    month: 'short',
+  return new Intl.DateTimeFormat('de-DE', {
+    month: 'long',
     day: 'numeric',
     year: 'numeric',
   }).format(new Date(dateValue))
@@ -201,26 +201,11 @@ onMounted(async () => {
 </script>
 
 <template>
-  <PageShell max-width="6xl">
+  <PageShell>
     <PageHeader
-      title="PTCG Logs"
-      description="Füge deine Pokémon TCG Live Battle Logs ein und speichere sie in MatchVault."
+      title="Logs"
+      description="Füge deine Pokémon TCG Live Kampflogs ein und speichere sie in MatchVault."
     >
-      <template #actions>
-          <NuxtLink
-            to="/matchups"
-            class="rounded-xl border border-slate-300 bg-white px-5 py-3 text-center font-bold text-slate-950 transition hover:bg-slate-100"
-          >
-            Matchups
-          </NuxtLink>
-
-          <NuxtLink
-            to="/dashboard"
-            class="rounded-xl border border-slate-300 bg-white px-5 py-3 text-center font-bold text-slate-950 transition hover:bg-slate-100"
-          >
-            Dashboard
-          </NuxtLink>
-      </template>
     </PageHeader>
 
       <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
@@ -306,13 +291,13 @@ onMounted(async () => {
                 Alle Ergebnisse
               </option>
               <option value="win">
-                Wins
+                Siege
               </option>
               <option value="loss">
-                Losses
+                Niederlagen
               </option>
               <option value="draw">
-                Draws
+                Unentschieden
               </option>
             </select>
           </div>
@@ -340,27 +325,12 @@ onMounted(async () => {
           </div>
 
           <div>
-            <label for="format-filter" class="block text-sm font-bold text-slate-700">
-              Format
-            </label>
-
-            <select
-              id="format-filter"
-              v-model="formatFilter"
-              class="mt-2 w-full rounded-xl border border-slate-300 bg-white px-4 py-3 outline-none focus:border-slate-950"
-            >
-              <option value="all">
-                Alle Formate
-              </option>
-
-              <option
-                v-for="format in availableFormats"
-                :key="format"
-                :value="format"
-              >
-                {{ format }}
-              </option>
-            </select>
+            <FormatSelect
+                id="format-filter"
+                v-model="formatFilter"
+                label="Format"
+                include-all-option
+            />
           </div>
         </div>
       </div>
@@ -411,7 +381,7 @@ onMounted(async () => {
                   </h3>
 
                   <p class="mt-1 text-sm font-bold text-slate-500">
-                    {{ group.total }} total
+                    {{ group.total }} insgesamt
                   </p>
                 </div>
 
@@ -428,7 +398,7 @@ onMounted(async () => {
                     </p>
 
                     <p class="text-sm font-bold text-slate-500">
-                      Record
+                      Siegesquote
                     </p>
                   </div>
 
