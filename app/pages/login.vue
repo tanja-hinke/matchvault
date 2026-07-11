@@ -35,6 +35,18 @@ const handleLogin = async () => {
 
   await navigateTo(redirectTo)
 }
+
+onMounted(async () => {
+  const { data } = await supabase.auth.getSession()
+
+  if (data.session) {
+    const redirectTo = typeof route.query.redirect === 'string'
+        ? route.query.redirect
+        : '/dashboard'
+
+    await navigateTo(redirectTo)
+  }
+})
 </script>
 
 <template>
