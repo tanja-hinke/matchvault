@@ -34,7 +34,7 @@ const { formatOptions } = useFormats()
     <select
         :id="id"
         v-model="model"
-        :class="id === 'battle-log-format' ? 'h-[58px] mt-2 w-full rounded-xl border border-slate-300 bg-white px-4 py-3 outline-none focus:border-slate-950' : 'mt-2 w-full rounded-xl border border-slate-300 bg-white px-4 py-3 outline-none focus:border-slate-950'"
+        :class="id === 'battle-log-format' ? 'h-[50px] mt-2 w-full rounded-xl border border-slate-300 bg-white px-4 py-3 outline-none focus:border-slate-950' : 'h-[50px] mt-2 w-full rounded-xl border border-slate-300 bg-white px-4 py-3 outline-none focus:border-slate-950'"
     >
       <option
           v-if="includeAllOption"

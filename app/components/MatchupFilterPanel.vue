@@ -81,7 +81,7 @@ const emit = defineEmits<{
           id="matchup-date-from-filter"
           v-model="dateFromFilter"
           type="date"
-          class="mt-2 w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:border-slate-950"
+          class="mt-2 h-[50px] w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:border-slate-950"
         >
       </div>
 
@@ -94,7 +94,7 @@ const emit = defineEmits<{
           id="matchup-date-to-filter"
           v-model="dateToFilter"
           type="date"
-          class="mt-2 w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:border-slate-950"
+          class="mt-2 h-[50px] w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:border-slate-950"
         >
       </div>
 
@@ -106,7 +106,7 @@ const emit = defineEmits<{
         <select
             id="matchup-deck-filter"
             v-model="deckFilter"
-            class="mt-2 w-full rounded-xl border border-slate-300 bg-white px-4 py-3 outline-none focus:border-slate-950"
+            class="mt-2 h-[50px] w-full rounded-xl border border-slate-300 bg-white px-4 py-3 outline-none focus:border-slate-950"
         >
           <option value="all">
             Alle
@@ -128,7 +128,7 @@ const emit = defineEmits<{
         <select
           id="matchup-start-position-filter"
           v-model="startPositionFilter"
-          class="mt-2 w-full rounded-xl border border-slate-300 bg-white px-4 py-3 outline-none focus:border-slate-950"
+          class="mt-2 h-[50px] w-full rounded-xl border border-slate-300 bg-white px-4 py-3 outline-none focus:border-slate-950"
         >
           <option value="all">
             Alle

@@ -285,7 +285,7 @@ onMounted(async () => {
             <select
               id="result-filter"
               v-model="resultFilter"
-              class="mt-2 w-full rounded-xl border border-slate-300 bg-white px-4 py-3 outline-none focus:border-slate-950"
+              class="mt-2 h-[50px] w-full rounded-xl border border-slate-300 bg-white px-4 py-3 outline-none focus:border-slate-950"
             >
               <option value="all">
                 Alle Ergebnisse
@@ -310,7 +310,7 @@ onMounted(async () => {
             <select
               id="start-position-filter"
               v-model="startPositionFilter"
-              class="mt-2 w-full rounded-xl border border-slate-300 bg-white px-4 py-3 outline-none focus:border-slate-950"
+              class="mt-2 h-[50px] w-full rounded-xl border border-slate-300 bg-white px-4 py-3 outline-none focus:border-slate-950"
             >
               <option value="all">
                 Alle

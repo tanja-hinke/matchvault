@@ -28,7 +28,7 @@ const linkClass = (path: string) => {
 </script>
 
 <template>
-  <nav class="flex lg:flex-col gap-3">
+  <nav class="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-1 gap-3">
     <NuxtLink
         to="/dashboard"
         :class="linkClass('/dashboard')"
