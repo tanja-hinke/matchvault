@@ -79,7 +79,7 @@ const getPokemon2SpriteUrl = (row: MatchupDeckRow | OpponentMatchupRow) => {
           @click="emit('toggle', getRowName(row))"
         >
           <td class="py-4 pr-4">
-            <div class="flex items-center gap-3">
+            <div class="grid grid-cols-[144px_1fr]">
               <PokemonSpritePair
                 :pokemon1-name="getPokemon1Name(row)"
                 :pokemon1-sprite-url="getPokemon1SpriteUrl(row)"
