@@ -19,6 +19,7 @@ const {
 } = useBattleLogs()
 
 const {
+  deckFilter,
   startPositionFilter,
   formatFilter,
   searchFilter,
@@ -104,6 +105,7 @@ onMounted(() => {
         v-model:search-filter="searchFilter"
         v-model:date-from-filter="dateFromFilter"
         v-model:date-to-filter="dateToFilter"
+        v-model:deck-filter="deckFilter"
         v-model:start-position-filter="startPositionFilter"
         v-model:format-filter="formatFilter"
         :visible-log-count="filteredLogs.length"

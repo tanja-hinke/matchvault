@@ -22,6 +22,7 @@ Das Projekt nutzt:
 - Tailwind CSS
 - Supabase
 - npm
+- KI
 
 ## Voraussetzungen
 

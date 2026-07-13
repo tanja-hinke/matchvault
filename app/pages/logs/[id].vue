@@ -45,6 +45,7 @@ const logId = computed(() => String(route.params.id))
 const isEditing = ref(false)
 const isSavingDetails = ref(false)
 const isDeleting = ref(false)
+const isCopyingRawLog = ref(false)
 
 const editResult = ref<'win' | 'loss' | 'draw' | 'unknown'>('unknown')
 const editWentFirst = ref<'first' | 'second' | 'unknown'>('unknown')
@@ -189,6 +190,33 @@ const cancelEditing = () => {
   isEditing.value = false
   successMessage.value = ''
   errorMessage.value = ''
+}
+
+const copyRawLogToClipboard = async () => {
+  errorMessage.value = ''
+  successMessage.value = ''
+
+  if (!log.value?.raw_log?.trim()) {
+    errorMessage.value = 'Für diesen Kampflog ist kein Rohtext gespeichert.'
+    return
+  }
+
+  if (!navigator.clipboard?.writeText) {
+    errorMessage.value = 'Dein Browser unterstützt das Kopieren in die Zwischenablage nicht.'
+    return
+  }
+
+  isCopyingRawLog.value = true
+
+  try {
+    await navigator.clipboard.writeText(log.value.raw_log)
+    successMessage.value = 'Roh-Kampflog wurde in die Zwischenablage kopiert.'
+  } catch (error) {
+    console.error(error)
+    errorMessage.value = 'Der Roh-Kampflog konnte nicht kopiert werden.'
+  } finally {
+    isCopyingRawLog.value = false
+  }
 }
 
 const formatDate = (dateValue: string) => {
@@ -622,6 +650,16 @@ onMounted(() => {
         description="Füge deine Pokémon TCG Live Battle Logs ein und speichere sie in MatchVault."
     >
       <template #actions>
+        <button
+            v-if="log"
+            type="button"
+            class="rounded-xl border border-slate-300 bg-white px-5 py-3 text-center font-bold text-slate-950 transition hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-60"
+            :disabled="isCopyingRawLog"
+            @click="copyRawLogToClipboard"
+        >
+          {{ isCopyingRawLog ? 'Kopiert...' : 'Kopieren' }}
+        </button>
+
           <button
             v-if="log && !isEditing"
             type="button"

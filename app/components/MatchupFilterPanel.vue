@@ -11,7 +11,11 @@ const dateToFilter = defineModel<string>('dateToFilter', {
   required: true,
 })
 
-const startPositionFilter = defineModel<'all' | 'first' | 'second' | 'unknown'>('startPositionFilter', {
+const deckFilter = defineModel<'all' | 'my' | 'opponent'>('deckFilter', {
+  required: true,
+})
+
+const startPositionFilter = defineModel<'all' | 'first' | 'second'>('startPositionFilter', {
   required: true,
 })
 
@@ -92,6 +96,28 @@ const emit = defineEmits<{
           type="date"
           class="mt-2 w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:border-slate-950"
         >
+      </div>
+
+      <div>
+        <label for="matchup-deck-filter" class="block text-sm font-bold text-slate-700">
+          Deck
+        </label>
+
+        <select
+            id="matchup-deck-filter"
+            v-model="deckFilter"
+            class="mt-2 w-full rounded-xl border border-slate-300 bg-white px-4 py-3 outline-none focus:border-slate-950"
+        >
+          <option value="all">
+            Alle
+          </option>
+          <option value="my">
+            Mein Deck
+          </option>
+          <option value="opponent">
+            Gegnerisches Deck
+          </option>
+        </select>
       </div>
 
       <div>
